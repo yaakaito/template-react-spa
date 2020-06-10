@@ -7,6 +7,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server",
+    "build": "webpack --mode production",
     "test": "jest --watch",
     "clean": "rimraf dist && rimraf node_modules/.cache",
     "lint": "eslint --ext .ts,.tsx ./src",
