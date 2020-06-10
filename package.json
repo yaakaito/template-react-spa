@@ -9,7 +9,8 @@
     "dev": "webpack-dev-server",
     "test": "jest --watch",
     "clean": "rimraf dist && rimraf node_modules/.cache",
-    "lint": "eslint --ext .ts,.tsx ./src"
+    "lint": "eslint --ext .ts,.tsx ./src",
+    "typecheck": "tsc -p . --noEmit"
   },
   "devDependencies": {
     "@types/jest": "26.0.0",

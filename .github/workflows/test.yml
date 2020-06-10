@@ -1,0 +1,26 @@
+name: Test
+
+on:
+  push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ '12.x' ]
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node }}
+    - uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-${{ github.event_name }}-${{ matrix.node }}-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-${{ github.event_name }}-${{ matrix.node }}-
+    - run: yarn install --frozen-lockfile
+    - run: yarn typecheck
+    - run: yarn jest -w 1 --ci
+    - run: yarn lint
