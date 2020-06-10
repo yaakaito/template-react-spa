@@ -13,6 +13,7 @@ module.exports = {
     ],
     rules: {
         'react/jsx-uses-vars': 1,
+        'react/prop-types': 0,
     },
     settings: {
         react: {
